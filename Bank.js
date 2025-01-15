@@ -79,7 +79,7 @@ class Account {
     // Example: checkBalance()
     checkBalance() {
 
-        console.log(`Balance for ${this.name} :is  ${this.balance}`);
+        console.log(`Balance for ${this.name} . is  ${this.balance}`);
         return this.balance;
     }
 }
