@@ -9,10 +9,10 @@ class Bank {
     // Example: createAccount(name, initialDeposit)
     createAccount(name, initialDeposit){
 
-        // if(!name || initialDeposit < 0){
-        //     console.log("Insufficient account details");
-        //     return null;
-        // }
+        if(!name || initialDeposit < 0){
+            console.log("Insufficient account details");
+            return null;
+        }
        const newAccount = new Account(name, initialDeposit);
        this.accounts.push(newAccount);
        console.log(`Account created for ${name} with initial deposit of ${initialDeposit}.`);
@@ -65,11 +65,13 @@ class Account {
    
     transfer(amount, recipientAccount) {
        
-        this.balance -= amount;
+        
         this.transactionHistory.push({ transactionType: 'Transfer', amount, to: recipientAccount.name });
-
-        recipientAccount.balance += amount;
+        this.balance -= amount;
+        
         recipientAccount.transactionHistory.push({ transactionType: 'Received', amount, from: this.name });
+        recipientAccount.balance += amount;
+        
         console.log(`Transferred: ${amount} to ${recipientAccount.name}`);
     }
 
