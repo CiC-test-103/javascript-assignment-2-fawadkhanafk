@@ -52,7 +52,7 @@ class Account {
         }else{
 
         this.balance -= amount
-        this.transactionHistory.push({ transactionType: 'withdrawal', amount });
+        this.transactionHistory.push({ transactionType: 'Withdrawal', amount });
         
         }
     }
