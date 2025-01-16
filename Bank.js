@@ -50,8 +50,8 @@ class Account {
 
         }else{
             this.balance -= amount
-            this.transactionHistory.push({ transactionType: 'withdraw', amount })
-            console.log(`Withdraw: ${amount} . New Balance: ${this.balance}`)
+            this.transactionHistory.push({ transactionType: 'withdrawal', amount })
+            console.log(`Withdrawal: ${amount} . New Balance: ${this.balance}`)
         }
     }
 
@@ -67,9 +67,9 @@ class Account {
 
         }else{
         this.balance -= amount;
-        this.transactionHistory.push({ transactionType: 'Transfer', "amount":300, "to": recipientAccount.name });
+        this.transactionHistory.push({ transactionType: 'Transfer', amount, "to": recipientAccount.name });
         recipientAccount.balance += amount;
-        recipientAccount.transactionHistory.push({ transactionType: 'Receive',"amount":300, "from": this.name });
+        recipientAccount.transactionHistory.push({ transactionType: 'Receive',amount, "from": this.name });
         console.log(`Transferred: ${amount} to ${recipientAccount.name}`)
 
         }
