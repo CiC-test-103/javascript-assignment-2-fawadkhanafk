@@ -15,6 +15,7 @@ class Bank {
         }
        const newAccount = new Account(name, initialDeposit);
        this.accounts.push(newAccount);
+       console.log(`Account created for ${name} with initial deposit of ${initialDeposit}.`);
        return newAccount;
         }
     }
@@ -46,12 +47,13 @@ class Account {
     withdraw(amount){
 
         if(amount > this.balance){
-            console.log("Insufficient funds. ..")
+            console.log("Insufficient funds. ..");
+            return;
 
         }else{
-            this.balance -= amount
-            this.transactionHistory.push({ transactionType: 'withdrawal', amount })
-            console.log(`Withdrawal: ${amount} . New Balance: ${this.balance}`)
+        this.balance -= amount
+        this.transactionHistory.push({ transactionType: 'withdrawal', amount });
+        console.log(`Withdrew: ${amount} . New Balance: ${this.balance}`);
         }
     }
 
@@ -66,14 +68,13 @@ class Account {
             console.log("Insufficient funds for transfer!");
             return;
 
-        }{
-
+        }else{
         this.balance -= amount;
         this.transactionHistory.push({ transactionType: 'Transfer', amount, to: recipientAccount.name });
 
         recipientAccount.balance += amount;
         recipientAccount.transactionHistory.push({ transactionType: 'Received',amount, from: this.name });
-        console.log(`Transferred: ${amount} to ${recipientAccount.name}`)
+        console.log(`Transferred: ${amount} to ${recipientAccount.name}`);
 
         }
     }
