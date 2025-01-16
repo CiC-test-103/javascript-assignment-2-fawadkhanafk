@@ -61,27 +61,31 @@ class Account {
     // for account recieving { transactionType: 'Received', amount: 300, from: senderName }
 
     transfer(amount, recipientAccount){
+        
         if(amount > this.balance){
             console.log("Insufficient funds for transfer!");
             return;
 
-        }else{
+        }{
+
         this.balance -= amount;
-        this.transactionHistory.push({ transactionType: 'Transfer', amount, "to": recipientAccount.name });
+        this.transactionHistory.push({ transactionType: 'Transfer', amount, to: recipientAccount.name });
+
         recipientAccount.balance += amount;
-        recipientAccount.transactionHistory.push({ transactionType: 'Receive',amount, "from": this.name });
+        recipientAccount.transactionHistory.push({ transactionType: 'Received',amount, from: this.name });
         console.log(`Transferred: ${amount} to ${recipientAccount.name}`)
 
         }
     }
     
     // Example: checkBalance()
-    checkBalance() {
+    checkBalance(){
 
         console.log(`Balance for ${this.name} . is  ${this.balance}`);
         return this.balance;
     }
 }
+
 
 //<-------------------------------DO NOT WRITE BELOW THIS LINE------------------------------>
 
