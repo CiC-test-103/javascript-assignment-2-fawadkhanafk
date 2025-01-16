@@ -68,6 +68,7 @@ class Account {
         }else{
         this.balance -= amount;
         this.transactionHistory.push({ transactionType: 'Transfer', "amount":300, "to": recipientAccount.name });
+        recipientAccount.balance += amount;
         recipientAccount.transactionHistory.push({ transactionType: 'Receive',"amount":300, "from": this.name });
         console.log(`Transferred: ${amount} to ${recipientAccount.name}`)
 
