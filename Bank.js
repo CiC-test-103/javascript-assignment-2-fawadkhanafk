@@ -65,13 +65,12 @@ class Account {
    
     transfer(amount, recipientAccount) {
        
-        
-        this.transactionHistory.push({ transactionType: 'Transfer', amount, to: recipientAccount.name });
         this.balance -= amount;
-        
-        recipientAccount.transactionHistory.push({ transactionType: 'Received', amount, from: this.name });
         recipientAccount.balance += amount;
-        
+
+        this.transactionHistory.push({ transactionType: 'Transfer', amount, to: recipientAccount.name });
+        //recipientAccount.transactionHistory.push({ transactionType: 'Received', amount, from: this.name });
+       
         console.log(`Transferred: ${amount} to ${recipientAccount.name}`);
     }
 
